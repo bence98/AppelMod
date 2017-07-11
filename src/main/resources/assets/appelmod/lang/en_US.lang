@@ -1,0 +1,14 @@
+#Appel Mod by CsokiCraft
+#Translated by <translators_name_here>
+#For translators: feel free to put your name to the above line
+
+item.appelChunk.name=Appel chunk
+item.appelBlade.name=Appel blade
+
+item.appelHelm.name=Appel helmet
+item.appelLegs.name=Appel leggings
+item.appelChest.name=Appel chestplate
+item.appelBoots.name=Appel boots
+
+tile.appelBlock.name=Appel block
+tile.appelOre.name=Appel ore

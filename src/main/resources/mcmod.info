@@ -1,0 +1,16 @@
+[
+{
+  "modid": "AppelMod",
+  "name": "AppelMod",
+  "description": "Adds Appel!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["CsokiCraft"],
+  "credits": "TyJupiter for textures and concept",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

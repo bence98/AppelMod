@@ -1,0 +1,33 @@
+CsokiCraft's Mods (CCML) License v1
+
+1. Definitions
+ - Mod: A modification made for Minecraft and/or a Modding API (see List of Modding APIs Ordered: csokicraft.agyklub.hu/licenses/lmao.txt)
+ - The Mod: The software licensed under this license (which itself is a Mod).
+ - Modpack: A collection made out of at least 3 Mods
+ - Author: The person or legal entity whose intellectual property The Mod is.
+ - User: The person or legal entity that possesses a copy of The Mod, not including the Author.
+ - Public Modpack: A Modpack that is openly available for use
+ - Private Modpack: A Modpack that is not a Public Modpack, and as such, only a limited amount of Users have access to
+
+2. Permissions
+The User may:
+ * Use this Mod in a Private Modpack
+ * Use this Mod in a Public Modpack if, and only if the Author has given written permission for it
+
+3. Restrictions
+The User may use The Mod only under the following conditions
+ * The Mod may not be redistributed unless it is distributed in a Modpack.
+ * In case it is distributed in a Public Modpack, giving credits to the Author (for instance, by adding a link to the Author's website) is appreciated.
+ * The User may not claim ownership to any parts of the Mod, unless given permission by the Author.
+ * The User makes no money from the Modpack unless the Author has given written permission for it
+
+4. Termination of this license
+ I.  In case of violating the above clauses, the license needs to be terminated.
+ II. The User may also choose to terminate the license at any time.
+ III.The Author may also choose to terminate this license. In this case, the User must be informed about the choice.
+Upon termination of the license:
+ * The User must destroy any copies of The Mod.
+ * The User may not use The Mod again until he accepts this license AND the Author gives written permission to the User.
+
+By having a copy of The Mod in any way, shape or form, you agree with this license, even if you haven't read it.
+All other rights are reserved by the Author.
