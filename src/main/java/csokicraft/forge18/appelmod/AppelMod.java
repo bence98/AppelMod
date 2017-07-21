@@ -26,8 +26,8 @@ import net.minecraftforge.oredict.*;
 @Mod(modid = AppelMod.MODID, version = AppelMod.VERSION)
 public class AppelMod
 {
-    public static final String MODID = "AppelMod";
-    public static final String VERSION = "1.1.1";
+    public static final String MODID = "appelmod";
+    public static final String VERSION = "1.1.2";
     
     @SidedProxy(clientSide="csokicraft.forge18.appelmod.ClientProxy", serverSide="csokicraft.forge18.appelmod.CommonProxy")
     public static CommonProxy proxy;
@@ -45,6 +45,9 @@ public class AppelMod
     
     public static Block appelBlock;
     public static Block appelOre;
+    
+    public static Item appelBlockItem;
+    public static Item appelOreItem;
     
     public static boolean genAppelOre;
     
@@ -70,31 +73,37 @@ public class AppelMod
     
 	private void initItems(){
 		appelTool = EnumHelper.addToolMaterial("APPEL", 3, 1561, 8, 3, 10);
-		appelArmor = EnumHelper.addArmorMaterial("APPEL", "appelmod:appel", 15, new int[]{3, 8, 6, 3}, 10, SoundEvents.item_armor_equip_diamond);
+		appelArmor = EnumHelper.addArmorMaterial("APPEL", "appelmod:appel", 15, new int[]{3, 6, 8, 3}, 10, SoundEvents.ITEM_ARMOR_EQUIP_DIAMOND, 1);
 		
-		appelChunk = new Item().setUnlocalizedName("appelChunk").setCreativeTab(CreativeTabs.tabMaterials);
-		appelBlade = new ItemSword(appelTool).setUnlocalizedName("appelBlade").setCreativeTab(CreativeTabs.tabCombat);
+		appelChunk = new Item().setUnlocalizedName("appelChunk").setRegistryName("appelChunk").setCreativeTab(CreativeTabs.MATERIALS);
+		appelBlade = new ItemSword(appelTool).setUnlocalizedName("appelBlade").setRegistryName("appelBlade").setCreativeTab(CreativeTabs.COMBAT);
 	    
-	    appelHelm = new ItemArmor(appelArmor, 1, EntityEquipmentSlot.HEAD).setUnlocalizedName("appelHelm").setCreativeTab(CreativeTabs.tabCombat);
-	    appelChest = new ItemArmor(appelArmor, 1, EntityEquipmentSlot.CHEST).setUnlocalizedName("appelChest").setCreativeTab(CreativeTabs.tabCombat);
-	    appelLegs = new ItemArmor(appelArmor, 2, EntityEquipmentSlot.LEGS).setUnlocalizedName("appelLegs").setCreativeTab(CreativeTabs.tabCombat);
-	    appelBoots = new ItemArmor(appelArmor, 1, EntityEquipmentSlot.FEET).setUnlocalizedName("appelBoots").setCreativeTab(CreativeTabs.tabCombat);
+	    appelHelm = new ItemArmor(appelArmor, 1, EntityEquipmentSlot.HEAD).setUnlocalizedName("appelHelm").setRegistryName("appelHelm").setCreativeTab(CreativeTabs.COMBAT);
+	    appelChest = new ItemArmor(appelArmor, 1, EntityEquipmentSlot.CHEST).setUnlocalizedName("appelChest").setRegistryName("appelChest").setCreativeTab(CreativeTabs.COMBAT);
+	    appelLegs = new ItemArmor(appelArmor, 2, EntityEquipmentSlot.LEGS).setUnlocalizedName("appelLegs").setRegistryName("appelLegs").setCreativeTab(CreativeTabs.COMBAT);
+	    appelBoots = new ItemArmor(appelArmor, 1, EntityEquipmentSlot.FEET).setUnlocalizedName("appelBoots").setRegistryName("appelBoots").setCreativeTab(CreativeTabs.COMBAT);
 		
-		GameRegistry.registerItem(appelChunk, "appelChunk");
-		GameRegistry.registerItem(appelBlade, "appelBlade");
+		GameRegistry.register(appelChunk);
+		GameRegistry.register(appelBlade);
 		
-		GameRegistry.registerItem(appelHelm, "appelHelm");
-		GameRegistry.registerItem(appelChest, "appelChest");
-		GameRegistry.registerItem(appelLegs, "appelLegs");
-		GameRegistry.registerItem(appelBoots, "appelBoots");
+		GameRegistry.register(appelHelm);
+		GameRegistry.register(appelChest);
+		GameRegistry.register(appelLegs);
+		GameRegistry.register(appelBoots);
 		
-		appelBlock = new Block(Material.iron).setCreativeTab(CreativeTabs.tabBlock).setUnlocalizedName("appelBlock").setResistance(1000).setHardness(5);
+		appelBlock = new Block(Material.IRON).setCreativeTab(CreativeTabs.BUILDING_BLOCKS).setUnlocalizedName("appelBlock").setRegistryName("appelBlock").setResistance(1000).setHardness(5);
 		appelBlock.setHarvestLevel("pickaxe", 2);
-		appelOre = new Block(Material.iron).setCreativeTab(CreativeTabs.tabBlock).setUnlocalizedName("appelOre").setResistance(15).setHardness(3);
+		appelOre = new Block(Material.IRON).setCreativeTab(CreativeTabs.BUILDING_BLOCKS).setUnlocalizedName("appelOre").setRegistryName("appelOre").setResistance(15).setHardness(3);
 		appelOre.setHarvestLevel("pickaxe", 2);
 		
-		GameRegistry.registerBlock(appelBlock, "appelBlock");
-		GameRegistry.registerBlock(appelOre, "appelOre");
+		GameRegistry.register(appelBlock);
+		GameRegistry.register(appelOre);
+		
+		appelBlockItem=new ItemBlock(appelBlock).setRegistryName("appelBlock");
+		appelOreItem=new ItemBlock(appelOre).setRegistryName("appelOre");
+		
+		GameRegistry.register(appelBlockItem);
+		GameRegistry.register(appelOreItem);
 		
 		OreDictionary.registerOre("oreAppel", appelOre);
 		OreDictionary.registerOre("gemAppel", appelChunk);
@@ -122,8 +131,8 @@ public class AppelMod
 				"***",
 				"*a*",
 				"***",
-				'*', Items.quartz,
-				'a', Items.apple);
+				'*', Items.QUARTZ,
+				'a', Items.APPLE);
 		GameRegistry.addSmelting(appelOre, new ItemStack(appelChunk), 1);
 		
 		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(appelBlade),
