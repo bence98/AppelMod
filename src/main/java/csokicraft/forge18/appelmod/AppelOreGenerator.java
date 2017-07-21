@@ -2,9 +2,9 @@ package csokicraft.forge18.appelmod;
 
 import java.util.Random;
 
-import net.minecraft.util.BlockPos;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.IChunkProvider;
+import net.minecraft.world.chunk.*;
 import net.minecraft.world.gen.feature.*;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
@@ -21,8 +21,8 @@ public class AppelOreGenerator implements IWorldGenerator{
 	}
 
 	@Override
-	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator, IChunkProvider chunkProvider){
-		if(world.provider.getDimensionId() == 0) //if Overworld
+	public void generate(Random rand, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider){
+		if(world.provider.getDimension() == 0) //if Overworld
 			generateVein(world, chunkX, chunkZ, rand);
 	}
 

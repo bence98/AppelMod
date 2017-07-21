@@ -5,28 +5,29 @@ import java.util.Map;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
+import net.minecraft.init.SoundEvents;
+import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.*;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.*;
 
 @Mod(modid = AppelMod.MODID, version = AppelMod.VERSION)
 public class AppelMod
 {
     public static final String MODID = "AppelMod";
-    public static final String VERSION = "1.1";
+    public static final String VERSION = "1.1.1";
     
     @SidedProxy(clientSide="csokicraft.forge18.appelmod.ClientProxy", serverSide="csokicraft.forge18.appelmod.CommonProxy")
     public static CommonProxy proxy;
@@ -69,15 +70,15 @@ public class AppelMod
     
 	private void initItems(){
 		appelTool = EnumHelper.addToolMaterial("APPEL", 3, 1561, 8, 3, 10);
-		appelArmor = EnumHelper.addArmorMaterial("APPEL", "appelmod:appel", 15, new int[]{3, 8, 6, 3}, 10);
+		appelArmor = EnumHelper.addArmorMaterial("APPEL", "appelmod:appel", 15, new int[]{3, 8, 6, 3}, 10, SoundEvents.item_armor_equip_diamond);
 		
 		appelChunk = new Item().setUnlocalizedName("appelChunk").setCreativeTab(CreativeTabs.tabMaterials);
 		appelBlade = new ItemSword(appelTool).setUnlocalizedName("appelBlade").setCreativeTab(CreativeTabs.tabCombat);
 	    
-	    appelHelm = new ItemArmor(appelArmor, 1, 0).setUnlocalizedName("appelHelm").setCreativeTab(CreativeTabs.tabCombat);
-	    appelChest = new ItemArmor(appelArmor, 1, 1).setUnlocalizedName("appelChest").setCreativeTab(CreativeTabs.tabCombat);
-	    appelLegs = new ItemArmor(appelArmor, 2, 2).setUnlocalizedName("appelLegs").setCreativeTab(CreativeTabs.tabCombat);
-	    appelBoots = new ItemArmor(appelArmor, 1, 3).setUnlocalizedName("appelBoots").setCreativeTab(CreativeTabs.tabCombat);
+	    appelHelm = new ItemArmor(appelArmor, 1, EntityEquipmentSlot.HEAD).setUnlocalizedName("appelHelm").setCreativeTab(CreativeTabs.tabCombat);
+	    appelChest = new ItemArmor(appelArmor, 1, EntityEquipmentSlot.CHEST).setUnlocalizedName("appelChest").setCreativeTab(CreativeTabs.tabCombat);
+	    appelLegs = new ItemArmor(appelArmor, 2, EntityEquipmentSlot.LEGS).setUnlocalizedName("appelLegs").setCreativeTab(CreativeTabs.tabCombat);
+	    appelBoots = new ItemArmor(appelArmor, 1, EntityEquipmentSlot.FEET).setUnlocalizedName("appelBoots").setCreativeTab(CreativeTabs.tabCombat);
 		
 		GameRegistry.registerItem(appelChunk, "appelChunk");
 		GameRegistry.registerItem(appelBlade, "appelBlade");
@@ -111,13 +112,12 @@ public class AppelMod
 	}
 
 	private void addCrafting(){
-		GameRegistry.addShapedRecipe(new ItemStack(appelBlock),
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(appelBlock),
 				"***",
 				"***",
 				"***",
-				'*', "gemAppel");
-		GameRegistry.addShapelessRecipe(new ItemStack(appelChunk, 9),
-				"blockAppel");
+				'*', "gemAppel"));
+		GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(appelChunk, 9), "blockAppel"));
 		GameRegistry.addShapedRecipe(new ItemStack(appelChunk),
 				"***",
 				"*a*",
@@ -126,29 +126,29 @@ public class AppelMod
 				'a', Items.apple);
 		GameRegistry.addSmelting(appelOre, new ItemStack(appelChunk), 1);
 		
-		GameRegistry.addShapedRecipe(new ItemStack(appelBlade),
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(appelBlade),
 				"*",
 				"*",
 				"i",
 				'*', "gemAppel",
-				'i', "ingotIron");
-		GameRegistry.addShapedRecipe(new ItemStack(appelHelm),
+				'i', "ingotIron"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(appelHelm),
 				"***",
 				"* *",
-				'*', "gemAppel");
-		GameRegistry.addShapedRecipe(new ItemStack(appelChest),
+				'*', "gemAppel"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(appelChest),
 				"* *",
 				"***",
 				"***",
-				'*', "gemAppel");
-		GameRegistry.addShapedRecipe(new ItemStack(appelLegs),
+				'*', "gemAppel"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(appelLegs),
 				"***",
 				"* *",
 				"* *",
-				'*', "gemAppel");
-		GameRegistry.addShapedRecipe(new ItemStack(appelBoots),
+				'*', "gemAppel"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(appelBoots),
 				"* *",
 				"* *",
-				'*', "gemAppel");
+				'*', "gemAppel"));
 	}
 }
